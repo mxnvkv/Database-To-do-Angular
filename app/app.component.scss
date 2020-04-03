@@ -1,3 +1,11 @@
-.app {
+// colors
 
+$black: #31393C;
+$white: #F9F4F5;
+
+// default
+
+* {
+    font-family: Montserrat;
+    color: $white;
 }
