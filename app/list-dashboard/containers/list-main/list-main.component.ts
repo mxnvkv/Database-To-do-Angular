@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ListItem } from '../../models/list-item.interface';
+import { ListDashboardService } from '../../list-dashboard.service';
 
 @Component({
     selector: 'list-main',
@@ -16,18 +17,39 @@ import { ListItem } from '../../models/list-item.interface';
                 (addNewListItem)="addItem($event)">
             </list-form>
         </div>
+
+        <div
+            class="list-items"
+            *ngFor="let item of listItems">
+            Title: {{ item.title | json }}
+        </div>
     `
 })
 
-export class ListMainComponent {
-    listItem: ListItem = {
-        title: '',
-        isChecked: true
-    };
+export class ListMainComponent implements OnInit {
+    listItems: ListItem[];
+    listItem: ListItem;
 
-    listItemsList: ListItem[] = [];
+    constructor(private listDashboardService: ListDashboardService) {}
 
-    addItem(event: ListItem) {
-        console.log(event);
+    ngOnInit() {
+        this.listDashboardService
+            .getAllListItems()
+            .subscribe((data: ListItem[]) => this.listItems = data);
+
+        this.listItem = {
+            title: '',
+            isChecked: true,
+            id: undefined
+        }
+    }
+
+    addItem(listItem: ListItem) {
+        console.log(listItem);
+        this.listDashboardService
+            .addListItem(listItem)
+            .subscribe((data: ListItem) => this.listItems.push(listItem));
+
+        // console.log(listItem.id);
     }
 }

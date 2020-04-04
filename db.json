@@ -1,1 +1,49 @@
-{}
+{
+  "listItems": [
+    {
+      "title": "first item",
+      "isChecked": true,
+      "id": 1
+    },
+    {
+      "title": "eeee",
+      "isChecked": true,
+      "id": 2
+    },
+    {
+      "title": "eeeee",
+      "isChecked": true,
+      "id": 3
+    },
+    {
+      "title": "eeeeeqqq",
+      "isChecked": true,
+      "id": 4
+    },
+    {
+      "title": "ssssss",
+      "isChecked": true,
+      "id": 5
+    },
+    {
+      "title": "ssssssaaaa",
+      "isChecked": true,
+      "id": 6
+    },
+    {
+      "title": "ssssssaaaa",
+      "isChecked": true,
+      "id": 7
+    },
+    {
+      "title": "how",
+      "isChecked": true,
+      "id": 8
+    },
+    {
+      "title": "qqqqq",
+      "isChecked": true,
+      "id": 9
+    }
+  ]
+}

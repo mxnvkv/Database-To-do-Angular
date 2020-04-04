@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 // components
 import { ListFormComponent } from './components/list-form/list-form.component';
 
 // containers
 import { ListMainComponent } from './containers/list-main/list-main.component';
+
+// services
+import { ListDashboardService } from './list-dashboard.service';
 
 @NgModule({
     declarations: [
@@ -15,12 +19,15 @@ import { ListMainComponent } from './containers/list-main/list-main.component';
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        HttpModule
     ],
     exports: [
         ListMainComponent
     ],
-    providers: []
+    providers: [
+        ListDashboardService
+    ]
 })
 
 export class ListDashboardModule {

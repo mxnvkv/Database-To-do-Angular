@@ -19,13 +19,13 @@ import { ListItem } from '../../models/list-item.interface';
                 Add
             </button>
 
-            <div class="form-object">
+            <!-- <div class="form-object">
                 {{ form.value | json }}
             </div>
 
             <div class="form-object">
                 Form status: {{ form.valid ? 'valid' : 'invalid' }}
-            </div>
+            </div> -->
         </form>
     `
 })
@@ -39,12 +39,8 @@ export class ListFormComponent {
 
     handleSubmit(formValue: ListItem, isFormValid: boolean) {
         if(isFormValid) {
-            let newListItem: ListItem = { title: formValue.title, isChecked: true };
+            let newListItem: ListItem = Object.assign({}, this.blankListItem, formValue );
             this.addNewListItem.emit(newListItem);
         }
     }
-
-    // createNewItem(title: string): ListItem {
-    //     return { title: title, isChecked: true }
-    // }
 }
