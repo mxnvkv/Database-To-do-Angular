@@ -1,0 +1,13 @@
+.form {
+    text-align: center;
+    margin-top: 50px;
+
+    &-input{
+        outline: none;
+    }
+
+    &-object {
+        margin-top: 20px;
+        font-family: monospace;
+    }
+}

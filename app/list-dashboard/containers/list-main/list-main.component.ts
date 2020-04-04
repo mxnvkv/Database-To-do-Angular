@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListItem } from '../../models/list-item.interface';
 
 @Component({
     selector: 'list-main',
@@ -10,11 +11,23 @@ import { Component } from '@angular/core';
         </div>
 
         <div class="form">
-            <list-form></list-form>
+            <list-form
+                [blankListItem]="listItem"
+                (addNewListItem)="addItem($event)">
+            </list-form>
         </div>
     `
 })
 
 export class ListMainComponent {
+    listItem: ListItem = {
+        title: '',
+        isChecked: true
+    };
 
+    listItemsList: ListItem[] = [];
+
+    addItem(event: ListItem) {
+        console.log(event);
+    }
 }

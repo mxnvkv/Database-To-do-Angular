@@ -7,5 +7,9 @@ $white: #F9F4F5;
 
 * {
     font-family: Montserrat;
-    color: $white;
+    color: $black;
+}
+
+body, html {
+    margin: 0;
 }
