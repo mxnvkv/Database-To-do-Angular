@@ -23,4 +23,10 @@ export class ListDashboardService {
             .post(LIST_API, listItem)
             .map((response: Response) => response.json());
     }
+
+    deleteListItem(listItem: ListItem): Observable<ListItem> {
+        return this.http
+            .delete(`${LIST_API}/${listItem.id}`)
+            .map((response: Response) => response.json());
+    }
 }

@@ -1,5 +1,5 @@
 export interface ListItem {
+    id: number,
     title:  string,
     isChecked: boolean
-    id: number,
 }

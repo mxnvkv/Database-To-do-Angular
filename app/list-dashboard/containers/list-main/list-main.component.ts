@@ -18,17 +18,24 @@ import { ListDashboardService } from '../../list-dashboard.service';
             </list-form>
         </div>
 
-        <div
-            class="list-items"
+        <!-- <div
             *ngFor="let item of listItems">
-            Title: {{ item.title | json }}
-        </div>
+            {{ item.title | json }}
+        </div> -->
+
+        <div>
+            <list-item
+                *ngFor="let item of listItems"
+                [listItem]="item"
+                (delete)="deleteItem($event)">
+            </list-item>
+        </div>        
     `
 })
 
 export class ListMainComponent implements OnInit {
     listItems: ListItem[];
-    listItem: ListItem;
+    listItem;
 
     constructor(private listDashboardService: ListDashboardService) {}
 
@@ -38,18 +45,28 @@ export class ListMainComponent implements OnInit {
             .subscribe((data: ListItem[]) => this.listItems = data);
 
         this.listItem = {
+            // id: this.listItems.length,
+            id: undefined,
             title: '',
-            isChecked: true,
-            id: undefined
+            isChecked: true
         }
     }
 
     addItem(listItem: ListItem) {
-        console.log(listItem);
         this.listDashboardService
             .addListItem(listItem)
-            .subscribe((data: ListItem) => this.listItems.push(listItem));
+            .subscribe((data: ListItem) => {
+                this.listItems.push(data);
+            });
+    }
 
-        // console.log(listItem.id);
+    deleteItem(listItem: ListItem) {
+        this.listDashboardService
+            .deleteListItem(listItem)
+            .subscribe((data: ListItem) => {
+                this.listItems = this.listItems.filter(
+                    (el: ListItem) => el.id !== listItem.id
+                );
+            });
     }
 }

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 // components
 import { ListFormComponent } from './components/list-form/list-form.component';
+import { ListItemComponent } from './components/list-item/list-item.component';
 
 // containers
 import { ListMainComponent } from './containers/list-main/list-main.component';
@@ -15,7 +16,8 @@ import { ListDashboardService } from './list-dashboard.service';
 @NgModule({
     declarations: [
         ListMainComponent,
-        ListFormComponent
+        ListFormComponent,
+        ListItemComponent
     ],
     imports: [
         CommonModule,

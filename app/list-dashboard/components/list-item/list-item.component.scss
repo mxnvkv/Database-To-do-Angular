@@ -1,0 +1,15 @@
+.listItem {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 50%;
+    height: 40px;
+    border: 1px solid black;
+    line-height: 40px;
+
+    button {
+        float: right;
+        margin-top: 10px;
+        margin-right: 20px;
+    }
+}
