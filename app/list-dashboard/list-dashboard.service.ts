@@ -29,4 +29,10 @@ export class ListDashboardService {
             .delete(`${LIST_API}/${listItem.id}`)
             .map((response: Response) => response.json());
     }
+
+    changeInput(listItem: ListItem): Observable<ListItem> {
+        return this.http
+            .put(`${LIST_API}/${listItem.id}`, listItem)
+            .map((response: Response) => response.json());
+    }
 }

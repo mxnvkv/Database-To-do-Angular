@@ -5,7 +5,7 @@ import { ListItem } from '../../models/list-item.interface';
     selector: 'list-form',
     styleUrls: ['list-form.component.scss'],
     template: `
-        <form (ngSubmit)="handleSubmit(form.value, form.valid)" class="form" #form="ngForm" novalidate>
+        <form (ngSubmit)="handleSubmit(form.value, form.valid, form); form.reset()" class="form" #form="ngForm" novalidate>
             <input
                 type="text"
                 name="title"

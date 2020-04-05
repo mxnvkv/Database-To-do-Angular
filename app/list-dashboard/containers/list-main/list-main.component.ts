@@ -27,7 +27,8 @@ import { ListDashboardService } from '../../list-dashboard.service';
             <list-item
                 *ngFor="let item of listItems"
                 [listItem]="item"
-                (delete)="deleteItem($event)">
+                (delete)="deleteItem($event)"
+                (toggleCheckbox)="toggleCheckbox($event)">
             </list-item>
         </div>        
     `
@@ -35,7 +36,7 @@ import { ListDashboardService } from '../../list-dashboard.service';
 
 export class ListMainComponent implements OnInit {
     listItems: ListItem[];
-    listItem;
+    listItem: ListItem;
 
     constructor(private listDashboardService: ListDashboardService) {}
 
@@ -48,7 +49,7 @@ export class ListMainComponent implements OnInit {
             // id: this.listItems.length,
             id: undefined,
             title: '',
-            isChecked: true
+            isChecked: false
         }
     }
 
@@ -68,5 +69,19 @@ export class ListMainComponent implements OnInit {
                     (el: ListItem) => el.id !== listItem.id
                 );
             });
+    }
+
+    toggleCheckbox(listItem: ListItem) {
+        this.listDashboardService
+            .changeInput(listItem)
+            .subscribe((data: ListItem) => {
+                this.listItems = this.listItems.map((item: ListItem) => {
+                    if(item.id === listItem.id) {
+                        item = Object.assign({}, item, listItem);
+                    } 
+
+                    return item;
+                });
+            })
     }
 }
