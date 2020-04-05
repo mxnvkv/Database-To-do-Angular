@@ -18,6 +18,10 @@ import { ListDashboardService } from '../../list-dashboard.service';
             </list-form>
         </div>
 
+        <div class="buttons-dashboard">
+            <button (click)="clearList()">Clear list</button>
+        </div>
+
         <!-- <div
             *ngFor="let item of listItems">
             {{ item.title | json }}
@@ -82,6 +86,26 @@ export class ListMainComponent implements OnInit {
 
                     return item;
                 });
-            })
+            });
     }
+
+    clearList() {
+        this.listItems.forEach( item => {
+            this.listDashboardService
+                .deleteListItem(item)
+                .subscribe((data: ListItem) => {
+                    this.listItems = this.listItems.filter(
+                        (listItem: ListItem) => listItem.id !== item.id 
+                    )
+                })
+        });
+    }
+
+    /*
+        Create:
+
+        1. Clear list
+        2. Clear done
+        3. All: check / uncheck
+    */
 }

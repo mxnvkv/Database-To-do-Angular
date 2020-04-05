@@ -35,4 +35,10 @@ export class ListDashboardService {
             .put(`${LIST_API}/${listItem.id}`, listItem)
             .map((response: Response) => response.json());
     }
+
+    // deleteList(): Observable<ListItem[]> {
+    //     return this.http
+    //         .delete(LIST_API)
+    //         .map((response: Response) => response.json());
+    // }
 }
