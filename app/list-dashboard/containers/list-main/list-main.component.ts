@@ -20,6 +20,7 @@ import { ListDashboardService } from '../../list-dashboard.service';
 
         <div class="buttons-dashboard">
             <button (click)="clearList()">Clear list</button>
+            <button (click)="clearCompleted()">Clear completed</button>
         </div>
 
         <!-- <div
@@ -99,6 +100,20 @@ export class ListMainComponent implements OnInit {
                     )
                 })
         });
+    }
+
+    clearCompleted() {
+        this.listItems.forEach( item => {
+            if (item.isChecked) {
+                this.listDashboardService
+                    .deleteListItem(item)
+                    .subscribe((data: ListItem) => {
+                        this.listItems = this.listItems.filter(
+                            (listItem: ListItem) => listItem.id !== item.id
+                        )
+                    })
+            }
+        })
     }
 
     /*
