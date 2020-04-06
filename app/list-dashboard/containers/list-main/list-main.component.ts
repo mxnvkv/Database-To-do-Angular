@@ -21,12 +21,11 @@ import { ListDashboardService } from '../../list-dashboard.service';
         <div class="buttons-dashboard">
             <button (click)="clearList()">Clear list</button>
             <button (click)="clearCompleted()">Clear completed</button>
-        </div>
 
-        <!-- <div
-            *ngFor="let item of listItems">
-            {{ item.title | json }}
-        </div> -->
+            All
+            <button (click)="checkAllItems()">Check</button>
+            <button (click)="unCheckAllItems()">Uncheck</button>
+        </div>
 
         <div>
             <list-item
@@ -51,7 +50,6 @@ export class ListMainComponent implements OnInit {
             .subscribe((data: ListItem[]) => this.listItems = data);
 
         this.listItem = {
-            // id: this.listItems.length,
             id: undefined,
             title: '',
             isChecked: false
@@ -90,8 +88,12 @@ export class ListMainComponent implements OnInit {
             });
     }
 
+
+
+    // Buttons dashboard
+
     clearList() {
-        this.listItems.forEach( item => {
+        this.listItems.forEach(item => {
             this.listDashboardService
                 .deleteListItem(item)
                 .subscribe((data: ListItem) => {
@@ -103,7 +105,7 @@ export class ListMainComponent implements OnInit {
     }
 
     clearCompleted() {
-        this.listItems.forEach( item => {
+        this.listItems.forEach(item => {
             if (item.isChecked) {
                 this.listDashboardService
                     .deleteListItem(item)
@@ -116,11 +118,44 @@ export class ListMainComponent implements OnInit {
         })
     }
 
-    /*
-        Create:
+    checkAllItems() {
+        this.listItems.forEach(item => {
+            if (!item.isChecked) {
+                item.isChecked = true;
 
-        1. Clear list
-        2. Clear done
-        3. All: check / uncheck
-    */
+                this.listDashboardService
+                    .changeInput(item)
+                    .subscribe((data: ListItem) => {})
+            }
+        })
+    }
+
+    unCheckAllItems() {
+        this.listItems.forEach(item => {
+            if (item.isChecked) {
+                item.isChecked = false;
+
+                this.listDashboardService
+                    .changeInput(item)
+                    .subscribe((data: ListItem) => {})
+            }
+        })
+    }    
+
+    // checkAllItems() {
+    //     this.listItems.forEach(item => {
+    //         this.listDashboardService
+    //             .changeInput(item)
+    //             .subscribe((data: ListItem) => {
+    //                 this.listItems = this.listItems.map((listItem: ListItem) => {
+    //                     if(item.id === listItem.id) {
+    //                         listItem.isChecked = true;
+    //                     }
+
+    //                     return listItem
+    //                 })
+    //             })
+    //     })
+    // }
+    
 }
