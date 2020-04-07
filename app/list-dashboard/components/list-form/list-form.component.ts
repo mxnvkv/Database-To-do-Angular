@@ -18,14 +18,6 @@ import { ListItem } from '../../models/list-item.interface';
             <button type="submit" [disabled]="form.invalid">
                 Add
             </button>
-
-            <!-- <div class="form-object">
-                {{ form.value | json }}
-            </div>
-
-            <div class="form-object">
-                Form status: {{ form.valid ? 'valid' : 'invalid' }}
-            </div> -->
         </form>
     `
 })

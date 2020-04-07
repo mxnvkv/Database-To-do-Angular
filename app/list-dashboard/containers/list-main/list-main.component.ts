@@ -19,12 +19,23 @@ import { ListDashboardService } from '../../list-dashboard.service';
         </div>
 
         <div class="buttons-dashboard">
-            <button (click)="clearList()">Clear list</button>
-            <button (click)="clearCompleted()">Clear completed</button>
+            <div>
+                <button (click)="clearList()" class="clearList">
+                    Clear list
+                </button>
+            </div>
 
-            All
-            <button (click)="checkAllItems()">Check</button>
-            <button (click)="unCheckAllItems()">Uncheck</button>
+            <div>
+                <button (click)="clearCompleted()" class="clearCompleted">
+                    Clear completed
+                </button>
+            </div>
+
+            <div class="check-dashboard">
+                All:
+                <button (click)="checkAllItems()">Check</button>
+                <button (click)="unCheckAllItems()">Uncheck</button>
+            </div>
         </div>
 
         <div>
@@ -140,7 +151,15 @@ export class ListMainComponent implements OnInit {
                     .subscribe((data: ListItem) => {})
             }
         })
-    }    
+    }
+
+    /* 
+        Explain: 
+        
+        Why does the code below change checkboxes
+        ONLY on the page? Why PUT method doesn't
+        work?
+    */
 
     // checkAllItems() {
     //     this.listItems.forEach(item => {

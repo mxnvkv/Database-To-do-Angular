@@ -1,33 +1,95 @@
+@import '../../../app.component.scss';
+
 .title {
-    margin: 0 auto;
+    padding: 30px 0 60px;
     text-align: center;
 
     h1 {
         font-size: 35px;
         margin: 0;
+        color: $white;
     }
 
     h3 {
         font-size: 17px;
         font-weight: 400;
         margin: 5px 0 0 0;
+        color: $white;
     }
 }
 
 .form {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .buttons-dashboard {
-    background-color: rgb(159, 217, 255);
-    padding: 5px 15px;
     width: 50%;
-    box-sizing: border-box;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    height: 40px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+        flex: 1;
+    }
 
     button {
-        margin-right: 50px;
+        border: 1px solid $black;
+        font-size: 12px;
+        height: auto;
+        font-weight: 500;
+        transition: .3s;
+    }
+
+    .clearList {
+        background-color: lighten($red, 20%);
+
+        &:hover {
+            background-color: darken(lighten($red, 20%), 12%);
+        }
+
+        &:active {
+            background-color: darken(lighten($red, 20%), 20%);
+        }
+    }
+
+    .clearCompleted {
+        background-color: $violet;
+
+        &:hover {
+            background-color: darken($violet, 5%);
+        }
+
+        &:active {
+            background-color: darken($violet, 12%);
+        }
+    }
+
+    .check-dashboard {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: $white;
+
+        button {
+            background-color: $violet;
+
+            &:hover {
+                background-color: darken($violet, 5%);
+            }
+
+            &:active {
+                background-color: darken($violet, 12%);
+            }
+        }
+
+        button:first-of-type {
+            margin: 0 10px 0 20px;
+        }
     }
 }
 

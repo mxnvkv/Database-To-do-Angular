@@ -1,13 +1,38 @@
+@import '../../../app.component.scss';
+
 .form {
     text-align: center;
-    margin-top: 50px;
+    width: 50%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
     &-input{
         outline: none;
+        flex: 10;
+        height: 30px;
+        font-size: 16px;
+        margin-right: 10px;
+        padding: 0 5px;
+        border: 1px solid black;
     }
 
-    &-object {
-        margin-top: 20px;
-        font-family: monospace;
+    button {
+        flex: 2;
+        border: 1px solid black;
+        background-color: $blue;
+        font-weight: 500;
+        font-size: 15px;
+        transition: .3s;
+
+        &:hover {
+            background-color: darken($blue, 10%);   
+        }
+
+        &:active {
+            background-color: darken($blue, 20%);   
+        }
     }
 }

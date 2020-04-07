@@ -1,24 +1,3 @@
 {
-  "listItems": [
-    {
-      "title": "1",
-      "isChecked": false,
-      "id": 1
-    },
-    {
-      "title": "3",
-      "isChecked": false,
-      "id": 3
-    },
-    {
-      "title": "4",
-      "isChecked": false,
-      "id": 4
-    },
-    {
-      "title": "5",
-      "isChecked": false,
-      "id": 5
-    }
-  ]
+  "listItems": []
 }

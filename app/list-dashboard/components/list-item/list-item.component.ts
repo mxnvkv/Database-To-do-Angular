@@ -8,11 +8,11 @@ import { ListItem } from '../../models/list-item.interface';
         <div class="listItem">
             <input
                 type="checkbox"
+                class="checkbox"
                 [ngModel]="listItem?.isChecked"
                 (ngModelChange)="changeCheckbox($event)">
 
-            {{ listItem.title }}
-            <!-- {{ listItem.title }} : {{ listItem.id }} -->
+            <span class="itemtitle">{{ listItem.title }}</span>
 
             <button (click)="deleteItem()">
                 Delete
